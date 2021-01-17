@@ -8,6 +8,10 @@ import { Lesson } from './lesson.entity';
 export class LessonService {
   constructor(@InjectRepository(Lesson) private lessonR: Repository<Lesson>) {}
 
+  async getLesson(id: string): Promise<Lesson> {
+    return this.lessonR.findOne({ id });
+  }
+
   async createLesson(name, startDate, endDate): Promise<Lesson> {
     const lesson = this.lessonR.create({
       id: uuid(),
