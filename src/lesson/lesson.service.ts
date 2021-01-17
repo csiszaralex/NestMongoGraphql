@@ -13,6 +13,10 @@ export class LessonService {
     return this.lessonR.findOne({ id });
   }
 
+  async getLessons(): Promise<Lesson[]> {
+    return this.lessonR.find();
+  }
+
   async createLesson(createLessonInput: CreateLessonInput): Promise<Lesson> {
     const { name, startDate, endDate } = createLessonInput;
     const lesson = this.lessonR.create({
